@@ -6,22 +6,39 @@ import time
 
 def main():
     obj_file = "tmp_time_memory_usage.obj"
+    blend_file = "tmp_time_memory_usage.blend"
     memory_file = "tmp_memory.txt"
+    import_time_file = "tmp_t_import.txt"
+    save_time_file = "tmp_t_save.txt"
 
     mem_watch = MemoryWatcher()
     mem_watch.start()
 
+    start = time.time()
     import_file(obj_file)
+    end = time.time()
+    t_blend = end - start
 
     max_ram = 8.0 # in GB
     mem_percent = mem_watch.poll()
     memory = (mem_percent / 100.0) * max_ram
+
+    start = time.time()
+    save_file(blend_file)
+    end = time.time()
+    t_save = end - start
+
     write_to_file(memory_file, str(memory))
+    write_to_file(import_time_file, str(t_blend))
+    write_to_file(save_time_file, str(t_save))
 
     sys.exit(0)
 
 def import_file(obj_file):
     bpy.ops.import_scene.obj(filepath=obj_file)
+
+def save_file(blend_file):
+    bpy.ops.wm.save_as_mainfile(filepath=blend_file)
 
 def write_to_file(file_name, data):
     with open(file_name, "w") as f:
