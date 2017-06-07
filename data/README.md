@@ -1,3 +1,24 @@
+## `cpu_*.txt`
+Recordings of the total CPU usage over time while a model creating using obj import and dupliverts plotting respectively were dragged around in Blender.
+
+In this case, the test used data from the [HYG 3.0 database](http://astronexus.com/node/34) and the entire dataset was used for both tests, for a total of 119,614 points.
+
+The version of Blender used was `2.78c`. The operating system used was Ubuntu Linux 16.04.2 LTS.
+
+Each line in the file represents the total system CPU usage (%) at an interval. The intervals are roughly regular with approximately 0.01 seconds in between readings.
+
+The CPU measure also includes the CPU usage of other processes running on the system at the time, but the tests were run with few other applications open so the measures across the two tests are reasonably comparable.
+
+## `obj_v_dupliverts_memory.csv`
+Data on the max memory usage when dragging obj imported and dupliverts plotted models in Blender.
+
+In this case, the test used data from the [HYG 3.0 database](http://astronexus.com/node/34) and the entire dataset was used for both tests, for a total of 119,614 points.
+
+The version of Blender used was `2.78c`. The operating system used was Ubuntu Linux 16.04.2 LTS.
+
+* `type` - The tye of scatter plot used in the test.
+* `memory` - The maximum amount of RAM used in GB by Blender during the model dragging.
+
 ## `time_memory_usage.csv`
 Data on the time, memory, and disk space usage of Blendplot and Blender in plotting a dataset using different amounts of data points.
 
